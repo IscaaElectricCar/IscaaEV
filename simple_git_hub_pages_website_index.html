@@ -1,0 +1,182 @@
+<!--
+Simple GitHub Pages Website
+Filename: index.html
+
+How to publish on GitHub Pages (quick):
+1. Create a new GitHub repo (e.g., username.github.io or any-repo-name).
+2. If you want site at username.github.io, name repo exactly: <your-username>.github.io
+3. Add this file as index.html at the repo root.
+   Git commands (locally):
+     git init
+     git add index.html
+     git commit -m "Initial site"
+     git branch -M main
+     git remote add origin https://github.com/<your-username>/<repo-name>.git
+     git push -u origin main
+4. In GitHub, go to Settings -> Pages and choose branch: main and folder: / (root). Save. The page will be live in a minute at https://<your-username>.github.io/<repo-name>/ or https://<your-username>.github.io for user repo.
+5. Optional: Add a CNAME file or configure custom domain under Pages settings.
+
+Want me to create the GitHub repo and push these files for you? Tell me your GitHub username and whether you want it as username.github.io (root) or a project page.
+-->
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Your Simple Website</title>
+  <meta name="description" content="A clean, responsive website ready for GitHub Pages">
+  <style>
+    :root{--bg:#0f1724;--card:#091026;--accent:#0ea5a4;--muted:#9ca3af;--glass: rgba(255,255,255,0.03)}
+    *{box-sizing:border-box}body{margin:0;font-family:Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;background:linear-gradient(180deg,#071029 0%, #071827 100%);color:#e6eef6;line-height:1.5}
+    header{backdrop-filter:blur(6px);background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);position:sticky;top:0;z-index:20}
+    .container{max-width:1000px;margin:0 auto;padding:24px}
+    nav{display:flex;align-items:center;justify-content:space-between}
+    .brand{display:flex;gap:12px;align-items:center}
+    .logo{width:40px;height:40px;border-radius:8px;background:var(--glass);display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--accent)}
+    .nav-links{display:flex;gap:14px}
+    .nav-links a{color:var(--muted);text-decoration:none;font-weight:600}
+    .hero{display:grid;grid-template-columns:1fr;gap:20px;padding:60px 0}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);padding:26px;border-radius:12px;box-shadow:0 6px 24px rgba(2,6,23,0.6)}
+    h1{font-size:clamp(1.6rem,2.6vw,2.4rem);margin:0 0 10px}
+    p.lead{color:var(--muted);margin:0 0 18px}
+    .cta{display:inline-block;padding:10px 16px;border-radius:10px;background:var(--accent);color:#042021;text-decoration:none;font-weight:700}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+    footer{padding:24px 0;color:var(--muted);font-size:0.95rem}
+
+    /* responsive nav */
+    .menu-toggle{display:none}
+    @media (max-width:760px){
+      .nav-links{display:none}
+      .menu-toggle{display:inline-block;background:none;border:0;color:var(--muted);font-weight:700}
+      .hero{padding:30px 0}
+    }
+
+    /* small utilities */
+    .muted{color:var(--muted)}
+    .pill{display:inline-block;padding:6px 10px;border-radius:999px;background:rgba(255,255,255,0.02);font-weight:600}
+    form{display:grid;gap:10px}
+    input, textarea{background:transparent;border:1px solid rgba(255,255,255,0.06);padding:10px;border-radius:8px;color:inherit}
+    button{cursor:pointer;border:0;padding:10px 12px;border-radius:8px;font-weight:700}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <nav>
+        <div class="brand">
+          <div class="logo">YR</div>
+          <div>
+            <div style="font-weight:800">YourSite</div>
+            <div class="muted" style="font-size:0.8rem">Simple site for GitHub Pages</div>
+          </div>
+        </div>
+
+        <div>
+          <button class="menu-toggle" id="menuBtn">Menu</button>
+          <div class="nav-links" id="navLinks">
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section id="home" class="hero">
+      <div class="card">
+        <h1>Hello — I'm Abdul Rahman (replace me)</h1>
+        <p class="lead">A clean, responsive single-file website ready to publish on GitHub Pages. Edit the content below and push to your GitHub repository.</p>
+        <a class="cta" href="#contact">Get in touch</a>
+      </div>
+
+      <div class="grid">
+        <div class="card">
+          <h3>Why use GitHub Pages</h3>
+          <p class="muted">Free hosting for static sites, automatic HTTPS, easy to update via git.</p>
+        </div>
+        <div class="card">
+          <h3>Customization</h3>
+          <p class="muted">Edit this HTML file, replace text, add images inside an /assets folder, or swap to a framework later.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" style="padding-top:20px">
+      <div class="card">
+        <h2>About</h2>
+        <p class="muted">This template uses semantic HTML and responsive CSS. It is purposely lightweight so it loads fast on GitHub Pages.</p>
+      </div>
+    </section>
+
+    <section id="projects" style="padding-top:20px">
+      <div class="grid">
+        <div class="card">
+          <h3>Project One</h3>
+          <p class="muted">Short description of a project. Add links to your GitHub repos here.</p>
+        </div>
+        <div class="card">
+          <h3>Project Two</h3>
+          <p class="muted">Another project. Replace with screenshots and links.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" style="padding-top:20px">
+      <div class="card">
+        <h2>Contact</h2>
+        <p class="muted">This form doesn't have a backend. It will open your email client. To collect responses automatically, connect a form backend or services like Formspree or Netlify Forms.</p>
+        <form id="contactForm" onsubmit="handleSubmit(event)">
+          <input id="name" placeholder="Your name" required>
+          <input id="email" placeholder="Your email" type="email" required>
+          <textarea id="message" placeholder="Message" rows="4" required></textarea>
+          <div style="display:flex;gap:8px">
+            <button type="submit" style="background:var(--accent);color:#042021">Send</button>
+            <button type="button" onclick="copySiteInfo()" style="background:transparent;border:1px solid rgba(255,255,255,0.06)">Copy repo commands</button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <footer>
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap">
+        <div class="muted">© <span id="year"></span> Your Name</div>
+        <div class="muted">Made with ❤️ · Hosted on GitHub Pages</div>
+      </div>
+    </footer>
+  </main>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    document.getElementById('menuBtn').addEventListener('click', ()=>{
+      const nav = document.getElementById('navLinks');
+      nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
+      nav.style.flexDirection = 'column';
+    });
+
+    function handleSubmit(e){
+      e.preventDefault();
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const message = document.getElementById('message').value;
+      const subject = encodeURIComponent('Website contact from ' + name);
+      const body = encodeURIComponent(message + '\n\nFrom: ' + name + ' <' + email + '>');
+      window.location.href = `mailto:your-email@example.com?subject=${subject}&body=${body}`;
+    }
+
+    function copySiteInfo(){
+      const text = `# Quick git commands to publish\n\n`+
+        `git init\n`+
+        `git add index.html\n`+
+        `git commit -m "Initial site"\n`+
+        `git branch -M main\n`+
+        `git remote add origin https://github.com/<your-username>/<repo-name>.git\n`+
+        `git push -u origin main\n`;
+      navigator.clipboard.writeText(text).then(()=> alert('Commands copied to clipboard'))
+    }
+  </script>
+</body>
+</html>
