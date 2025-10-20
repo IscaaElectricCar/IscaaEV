@@ -1,236 +1,425 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ISCAA LEONIX EV: EVGP Project Infographic</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap"
-    rel="stylesheet"
-  />
-  <style>
-    html {
-      scroll-behavior: smooth;
-    }
-    body {
-      font-family: 'Inter', sans-serif;
-      background-color: #1a202c;
-      background-image: repeating-linear-gradient(
-        -45deg,
-        #1d2633 0%,
-        #1d2633 2px,
-        transparent 2px,
-        transparent 10px
-      );
-      color: #f7fafc;
-    }
-    .chart-container {
-      position: relative;
-      width: 100%;
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
-      height: 300px;
-      max-height: 400px;
-    }
-    @media (min-width: 768px) {
-      .chart-container {
-        height: 350px;
-      }
-    }
-    h1,
-    h2,
-    h3 {
-      transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
-    }
-    h1:hover,
-    h2:hover,
-    h3:hover {
-      color: #00e5ff;
-      transform: scale(1.03);
-    }
-
-    /* Slider Styles */
-    .slider {
-      position: relative;
-      width: 100%;
-      height: 400px;
-      overflow: hidden;
-      border-radius: 12px;
-    }
-    .slider img {
-      width: 100%;
-      height: 400px;
-      object-fit: cover;
-      transition: transform 0.5s ease;
-    }
-    .slider img:hover {
-      transform: scale(1.05);
-    }
-    .slide-track {
-      display: flex;
-      width: 400%;
-      animation: slide 16s infinite;
-    }
-    @keyframes slide {
-      0% {
-        transform: translateX(0%);
-      }
-      20% {
-        transform: translateX(0%);
-      }
-      25% {
-        transform: translateX(-100%);
-      }
-      45% {
-        transform: translateX(-100%);
-      }
-      50% {
-        transform: translateX(-200%);
-      }
-      70% {
-        transform: translateX(-200%);
-      }
-      75% {
-        transform: translateX(-300%);
-      }
-      95% {
-        transform: translateX(-300%);
-      }
-      100% {
-        transform: translateX(0%);
-      }
-    }
-  </style>
-</head>
-
-<body class="bg-[#1A202C] text-[#F7FAFC]">
-  <div class="container mx-auto p-4 md:p-8">
-    <!-- everything else before gallery stays the same -->
-    <!-- GALLERY SECTION -->
-    <div
-      id="gallery"
-      class="lg:col-span-3 bg-[#2D3748] rounded-lg shadow-md p-6"
-    >
-      <h3 class="text-xl font-bold text-[#00BCD4] mb-4">
-        Gallery: Moments from the Project
-      </h3>
-      <p class="text-[#A0AEC0] mb-6">
-        A visual journey showcasing the team's dedication, progress, and the
-        final prototype on and off the track.
-      </p>
-
-      <div class="slider mb-6">
-        <div class="slide-track">
-          <img
-            src="https://i.ibb.co/6chpWtVH/IMG-2051011-WA0009.jpg"
-            alt="Team working"
-          />
-          <img
-            src="https://i.ibb.co/Txn5ynFn/IMG-2051011-WA0009.jpg"
-            alt="Workshop session"
-          />
-          <img
-            src="https://i.ibb.co/whxZkw1L/IMG-2051011-WA0009.jpg"
-            alt="Track test"
-          />
-          <img
-            src="https://i.ibb.co/fjbMkgx/IMG-2051011-WA0009.jpg"
-            alt="Final build"
-          />
-        </div>
-      </div>
-
-      <p class="text-sm text-center text-[#A0AEC0]">
-        Each frame captures a milestone in our electric vehicle journey.
-      </p>
-    </div>
-  </div>
-
-  <!-- the rest of your chart.js scripts remain identical -->
-  <script>
-    const wrapLabel = (label, maxWidth) => {
-      const words = label.split(' ');
-      const lines = [];
-      let currentLine = words[0];
-      for (let i = 1; i < words.length; i++) {
-        if ((currentLine + ' ' + words[i]).length > maxWidth) {
-          lines.push(currentLine);
-          currentLine = words[i];
-        } else {
-          currentLine += ' ' + words[i];
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISCAA LEONIX EV: EVGP Project Infographic</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        html {
+            scroll-behavior: smooth; /* Enables smooth scrolling when clicking anchor links */
         }
-      }
-      lines.push(currentLine);
-      return lines;
-    };
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #1a202c;
+            background-image: repeating-linear-gradient(-45deg, #1d2633 0%, #1d2633 2px, transparent 2px, transparent 10px);
+            color: #F7FAFC;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+        h1, h2, h3 {
+            transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
+        }
+        h1:hover, h2:hover, h3:hover {
+            color: #00E5FF;
+            transform: scale(1.03);
+        }
+    </style>
+</head>
+<body class="bg-[#1A202C] text-[#F7FAFC]">
+    <div class="container mx-auto p-4 md:p-8">
 
-    const tooltipTitleCallback = (tooltipItems) => {
-      const item = tooltipItems[0];
-      let label = item.chart.data.labels[item.dataIndex];
-      return Array.isArray(label) ? label.join(' ') : label;
-    };
+        <header id="home" class="text-center mb-12">
+            <h1 class="text-4xl md:text-6xl font-black text-[#00BCD4]">ISCAA LEONIX EV</h1>
+            <p class="text-lg md:text-xl text-[#00ACC1] font-medium mt-2">A Multi-faceted Approach to Electric Vehicle Grand Prix Performance</p>
+            
+            <!-- UPDATED NAVIGATION BAR with anchor links -->
+            <nav class="mt-8">
+                <ul class="flex flex-col md:flex-row justify-center space-y-3 md:space-y-0 md:space-x-8 text-lg font-medium">
+                    <li><a href="#home" class="text-[#CBD5E0] hover:text-[#00BCD4] transition duration-300 border-b-2 border-transparent hover:border-[#00BCD4] pb-1">Home</a></li>
+                    <li><a href="#about-us" class="text-[#CBD5E0] hover:text-[#00BCD4] transition duration-300 border-b-2 border-transparent hover:border-[#00BCD4] pb-1">About Us</a></li>
+                    <li><a href="#contact-us" class="text-[#CBD5E0] hover:text-[#00BCD4] transition duration-300 border-b-2 border-transparent hover:border-[#00BCD4] pb-1">Contact Us</a></li>
+                    <li><a href="#gallery" class="text-[#CBD5E0] hover:text-[#00BCD4] transition duration-300 border-b-2 border-transparent hover:border-[#00BCD4] pb-1">Gallery</a></li>
+                </ul>
+            </nav>
+            <!-- END UPDATED NAVIGATION BAR -->
 
-    const commonTooltipOptions = {
-      plugins: {
-        tooltip: {
-          callbacks: {
-            title: tooltipTitleCallback,
-          },
-        },
-      },
-    };
+        </header>
 
-    const vibrantTurquoise = {
-      deep: '#00ACC1',
-      bright: '#00BCD4',
-      light: '#27B8CE',
-      veryLight: '#4DD0E1',
-    };
+        <main class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 
-    new Chart(document.getElementById('performanceChart'), {
-      type: 'bar',
-      data: {
-        labels: ['Laps Completed', 'Top Speed (km/h)', 'Reliability Score (%)'],
-        datasets: [
-          {
-            label: 'LEONIX 1 Result',
-            data: [45, 85, 98],
-            backgroundColor: [
-              vibrantTurquoise.bright,
-              vibrantTurquoise.light,
-              vibrantTurquoise.deep,
-            ],
-            borderColor: [
-              vibrantTurquoise.bright,
-              vibrantTurquoise.light,
-              vibrantTurquoise.deep,
-            ],
-            borderWidth: 1,
-          },
-          {
-            label: 'Project Target',
-            data: [40, 80, 95],
-            backgroundColor: ['rgba(200, 200, 200, 0.5)'],
-            borderColor: ['rgba(150, 150, 150, 1)'],
-            borderWidth: 1,
-          },
-        ],
-      },
-      options: {
-        ...commonTooltipOptions,
-        maintainAspectRatio: false,
-        scales: { y: { beginAtZero: true } },
-        plugins: {
-          ...commonTooltipOptions.plugins,
-          legend: { position: 'top', labels: { color: '#CBD5E0' } },
-        },
-      },
-    });
-  </script>
+            <!-- ABOUT US SECTION -->
+            <div id="about-us" class="lg:col-span-3 bg-[#2D3748] rounded-lg shadow-lg p-6 flex flex-col md:flex-row items-center justify-center text-center">
+                <div class="md:pr-8">
+                    <h2 class="text-2xl font-bold text-[#00BCD4]">Core Objective of the ISCAA-LEONIX EV Project</h2>
+                    <p class="text-[#A0AEC0] mt-2 max-w-2xl mx-auto">To demonstrate the synergy of innovative chassis design, advanced electronic power management, and real-world data analysis to achieve superior on-track results in a competitive engineering context. The ISCAA-LEONIX EV project is our team's key initiative to push the boundaries of electric vehicle technology.</p>
+                </div>
+            </div>
+
+            <div class="md:col-span-2 lg:col-span-1 bg-[#2D3748] rounded-lg shadow-md p-6 flex flex-col justify-center items-center">
+                <h3 class="text-xl font-bold text-center text-[#00BCD4] mb-4">Top Speed Achieved</h3>
+                <div class="text-8xl font-black text-[#00ACC1]">85</div>
+                <div class="text-2xl font-bold text-[#A0AEC0]">km/h</div>
+                <p class="text-center text-[#CBD5E0] mt-4">The LEONIX 1 prototype demonstrated exceptional speed, a direct result of our integrated design philosophy.</p>
+            </div>
+
+            <div class="md:col-span-2 lg:col-span-2 bg-[#2D3748] rounded-lg shadow-md p-6">
+                <h3 class="text-xl font-bold text-[#00BCD4] mb-2">On-Track Performance Metrics</h3>
+                <p class="text-[#A0AEC0] mb-4">Quantitative results from the final endurance race highlight the success of our engineering decisions against project targets, showcasing the car's performance.</p>
+                <div class="chart-container h-64 md:h-80">
+                    <canvas id="performanceChart"></canvas>
+                </div>
+            </div>
+            
+            <div class="lg:col-span-3 grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-[#2D3748] rounded-lg shadow-md p-6">
+                    <h3 class="text-xl font-bold text-[#00BCD4] mb-2">Chassis Innovation: Carbon Fiber & Aerodynamics</h3>
+                    <p class="text-[#A0AEC0] mb-4">Our approach leveraged an ultra-lightweight and exceptionally rigid carbon fiber monocoque chassis, combined with a low-drag body shell optimized through computational fluid dynamics (CFD).</p>
+                    <div class="flex flex-col md:flex-row items-center gap-6">
+                        <div class="w-full md:w-1/2">
+                             <div class="border-4 border-[#00ACC1] p-4 rounded-lg bg-[#2D3748] text-center">
+                                <div class="font-bold text-lg text-[#00BCD4]">CARBON FIBER MONOCOQUE</div>
+                                <div class="text-sm text-[#A0AEC0] mt-2">Ultra-Lightweight</div>
+                                <div class="w-full h-1 bg-[#00ACC1] my-2 rounded-full"></div>
+                                <div class="text-sm text-[#A0AEC0]">Exceptional Rigidity</div>
+                            </div>
+                        </div>
+                        <div class="w-full md:w-1/2 chart-container h-48 md:h-56">
+                            <canvas id="aeroChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-[#2D3748] rounded-lg shadow-md p-6">
+                    <h3 class="text-xl font-bold text-[#00BCD4] mb-2">Advanced Power Management</h3>
+                    <p class="text-[#A0AEC0] mb-4">A proprietary system was implemented to intelligently distribute energy, allowing for dynamic adjustments based on real-time sensor data for peak efficiency.</p>
+                    <div class="space-y-3">
+                        <div class="flex items-center">
+                            <div class="bg-[#00BCD4] text-[#1A202C] rounded-full h-8 w-8 flex items-center justify-center font-bold">1</div>
+                            <div class="ml-4 p-2 bg-[#1A202C] rounded-lg text-[#CBD5E0]">On-Board Sensors (Temp, RPM, Voltage)</div>
+                        </div>
+                        <div class="pl-4">
+                            <div class="text-[#00BCD4] text-3xl leading-none">&darr;</div>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="bg-[#00BCD4] text-[#1A202C] rounded-full h-8 w-8 flex items-center justify-center font-bold">2</div>
+                            <div class="ml-4 p-2 bg-[#00BCD4]/10 rounded-lg text-[#00ACC1] font-semibold">Real-Time Data Processing Unit</div>
+                        </div>
+                        <div class="pl-4">
+                            <div class="text-[#00BCD4] text-3xl leading-none">&darr;</div>
+                        </div>
+                        <div class="flex items-center">
+                             <div class="bg-[#00BCD4] text-[#1A202C] rounded-full h-8 w-8 flex items-center justify-center font-bold">3</div>
+                            <div class="ml-4 p-2 bg-[#1A202C] rounded-lg text-[#CBD5E0]">Dynamic Power Distribution to Motor</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lg:col-span-3 bg-[#2D3748] rounded-lg shadow-md p-6">
+                <h3 class="text-xl font-bold text-[#00BCD4] mb-2">Team Structure & Skill Development</h3>
+                <p class="text-[#A0AEC0] mb-4">The LEONIX team is organized into key departments, each contributing specialized expertise to the project's success. This collaborative structure enhances both technical and soft skills across the board.</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
+                    <div class="bg-[#1A202C] p-4 rounded-lg text-center shadow-inner">
+                        <p class="font-bold text-lg text-[#00BCD4]">Mechanical</p>
+                        <p class="text-sm text-[#A0AEC0]">Chassis, drivetrain, & suspension design and fabrication.</p>
+                    </div>
+                    <div class="bg-[#1A202C] p-4 rounded-lg text-center shadow-inner">
+                        <p class="font-bold text-lg text-[#00BCD4]">Electrical</p>
+                        <p class="text-sm text-[#A0AEC0]">Power management, circuit design, and sensor integration.</p>
+                    </div>
+                    <div class="bg-[#1A202C] p-4 rounded-lg text-center shadow-inner">
+                        <p class="font-bold text-lg text-[#00BCD4]">Safety</p>
+                        <p class="text-sm text-[#A0AEC0]">Ensuring all vehicle systems meet competition regulations.</p>
+                    </div>
+                    <div class="bg-[#1A202C] p-4 rounded-lg text-center shadow-inner">
+                        <p class="font-bold text-lg text-[#00BCD4]">Drivers</p>
+                        <p class="text-sm text-[#A0AEC0]">On-track performance testing, data collection, and race strategy.</p>
+                    </div>
+                    <div class="bg-[#1A202C] p-4 rounded-lg text-center shadow-inner">
+                        <p class="font-bold text-lg text-[#00BCD4]">Media</p>
+                        <p class="text-sm text-[#A0AEC0]">Documenting the journey and communicating our project's story.</p>
+                    </div>
+                    <div class="bg-[#1A202C] p-4 rounded-lg text-center shadow-inner">
+                        <p class="font-bold text-lg text-[#00BCD4]">Innovation</p>
+                        <p class="text-sm text-[#A0AEC0]">AI-driven telemetry for real-time data analysis and performance optimization.</p>
+                    </div>
+                    <div class="bg-[#1A202C] p-4 rounded-lg text-center shadow-inner">
+                        <p class="font-bold text-lg text-[#00BCD4]">3D</p>
+                        <p class="text-sm text-[#A0AEC0]">3D modeling, rendering, and printing for component prototypes and design.</p>
+                    </div>
+                </div>
+                
+                <div class="chart-container h-80 md:h-96">
+                    <canvas id="teamCompositionChart"></canvas>
+                </div>
+            </div>
+
+            <div class="lg:col-span-3 bg-[#2D3748] rounded-lg shadow-md p-6">
+                <h3 class="text-xl font-bold text-[#00BCD4] mb-2">Technical Proficiencies Radar</h3>
+                <p class="text-[#A0AEC0] mb-4">This chart represents the team's combined proficiency across key technical and soft skills, showing a balanced and well-rounded team.</p>
+                <div class="chart-container h-80 md:h-96">
+                    <canvas id="skillsChart"></canvas>
+                </div>
+            </div>
+
+            <!-- CONTACT US SECTION -->
+            <div id="contact-us" class="lg:col-span-3 bg-[#2D3748] rounded-lg shadow-md p-6">
+                <h3 class="text-xl font-bold text-[#00BCD4] mb-4">Follow Our Journey on Social Media</h3>
+                <p class="text-[#A0AEC0] mb-6">Stay up-to-date with our latest developments, race day updates, and behind-the-scenes content by following us on our social media platforms.</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="bg-[#1A202C] p-4 rounded-lg text-center flex items-center justify-center space-x-4">
+                        <img src="https://placehold.co/40x40/1A202C/FFFFFF?text=X" alt="X (Twitter) icon" class="w-10 h-10 rounded-full">
+                        <a href="#" class="text-[#00BCD4] hover:underline">@iscaa_evgp_team</a>
+                    </div>
+                    <div class="bg-[#1A202C] p-4 rounded-lg text-center flex items-center justify-center space-x-4">
+                        <img src="https://placehold.co/40x40/1A202C/FFFFFF?text=F" alt="Facebook icon" class="w-10 h-10 rounded-full">
+                        <a href="#" class="text-[#00BCD4] hover:underline">ISCAA EVGP Team</a>
+                    </div>
+                    <div class="bg-[#1A202C] p-4 rounded-lg text-center flex items-center justify-center space-x-4">
+                        <img src="https://placehold.co/40x40/1A202C/FFFFFF?text=I" alt="Instagram icon" class="w-10 h-10 rounded-full">
+                        <a href="#" class="text-[#00BCD4] hover:underline">@iscaa_evgp_official</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- GALLERY SECTION -->
+            <div id="gallery" class="lg:col-span-3 bg-[#2D3748] rounded-lg shadow-md p-6">
+                <h3 class="text-xl font-bold text-[#00BCD4] mb-4">Gallery: Moments from the Project</h3>
+                <p class="text-[#A0AEC0] mb-6">A visual journey showcasing the team's dedication, progress, and the final prototype on and off the track.</p>
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                    <div class="flex flex-col items-center">
+                        <img src="https://placehold.co/400x300/1A202C/00BCD4?text=Team+LEONIX" alt="Team photo" class="w-full h-auto rounded-lg shadow-md mb-2">
+                        <p class="text-sm text-center text-[#A0AEC0]">The team gathered with the prototype.</p>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <img src="https://placehold.co/400x300/1A202C/00BCD4?text=Chassis+Fabrication" alt="Chassis fabrication" class="w-full h-auto rounded-lg shadow-md mb-2">
+                        <p class="text-sm text-center text-[#A0AEC0]">Detailing the carbon fiber monocoque.</p>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <img src="https://placehold.co/400x300/1A202C/00BCD4?text=Testing+Run" alt="On-track testing" class="w-full h-auto rounded-lg shadow-md mb-2">
+                        <p class="text-sm text-center text-[#A0AEC0]">Collecting data during a test run.</p>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <img src="https://placehold.co/400x300/1A202C/00BCD4?text=Final+Assembly" alt="Final assembly" class="w-full h-auto rounded-lg shadow-md mb-2">
+                        <p class="text-sm text-center text-[#A0AEC0]">The final stages of assembly.</p>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <script>
+        const wrapLabel = (label, maxWidth) => {
+            const words = label.split(' ');
+            const lines = [];
+            let currentLine = words[0];
+
+            for (let i = 1; i < words.length; i++) {
+                if ((currentLine + ' ' + words[i]).length > maxWidth) {
+                    lines.push(currentLine);
+                    currentLine = words[i];
+                } else {
+                    currentLine += ' ' + words[i];
+                }
+            }
+            lines.push(currentLine);
+            return lines;
+        };
+        
+        const tooltipTitleCallback = (tooltipItems) => {
+            const item = tooltipItems[0];
+            let label = item.chart.data.labels[item.dataIndex];
+            if (Array.isArray(label)) {
+                return label.join(' ');
+            } else {
+                return label;
+            }
+        };
+
+        const commonTooltipOptions = {
+            plugins: {
+                tooltip: {
+                    callbacks: {
+                        title: tooltipTitleCallback
+                    }
+                }
+            }
+        };
+        
+        const vibrantTurquoise = {
+            deep: '#00ACC1',
+            bright: '#00BCD4',
+            light: '#27B8CE',
+            veryLight: '#4DD0E1'
+        };
+
+        new Chart(document.getElementById('performanceChart'), {
+            type: 'bar',
+            data: {
+                labels: ['Laps Completed', 'Top Speed (km/h)', 'Reliability Score (%)'],
+                datasets: [{
+                    label: 'LEONIX 1 Result',
+                    data: [45, 85, 98],
+                    backgroundColor: [vibrantTurquoise.bright, vibrantTurquoise.light, vibrantTurquoise.deep],
+                    borderColor: [vibrantTurquoise.bright, vibrantTurquoise.light, vibrantTurquoise.deep],
+                    borderWidth: 1
+                }, {
+                    label: 'Project Target',
+                    data: [40, 80, 95],
+                    backgroundColor: ['rgba(200, 200, 200, 0.5)'],
+                    borderColor: ['rgba(150, 150, 150, 1)'],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                ...commonTooltipOptions,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                },
+                plugins: {
+                    ...commonTooltipOptions.plugins,
+                    legend: {
+                        position: 'top',
+                        labels: {
+                            color: '#CBD5E0'
+                        }
+                    }
+                }
+            }
+        });
+
+        new Chart(document.getElementById('aeroChart'), {
+            type: 'doughnut',
+            data: {
+                labels: ['Aerodynamic Efficiency Gain', 'Other Factors'],
+                datasets: [{
+                    data: [25, 75],
+                    backgroundColor: [vibrantTurquoise.bright, '#4D5562'],
+                    hoverOffset: 4
+                }]
+            },
+            options: {
+                 ...commonTooltipOptions,
+                maintainAspectRatio: false,
+                plugins: {
+                    ...commonTooltipOptions.plugins,
+                    legend: {
+                        display: true,
+                        position: 'bottom',
+                        labels: {
+                            color: '#CBD5E0'
+                        }
+                    }
+                }
+            }
+        });
+
+        new Chart(document.getElementById('teamCompositionChart'), {
+            type: 'doughnut',
+            data: {
+                labels: ['Mechanical', 'Electrical', 'Safety', 'Drivers', 'Media', 'Innovation', '3D'],
+                datasets: [{
+                    data: [6, 5, 3, 2, 2, 2, 2],
+                    backgroundColor: [
+                        vibrantTurquoise.deep,
+                        vibrantTurquoise.bright,
+                        vibrantTurquoise.light,
+                        '#81d4fa',
+                        '#4dd0e1',
+                        '#64B5F6',
+                        '#9575CD'
+                    ],
+                    hoverOffset: 4
+                }]
+            },
+            options: {
+                ...commonTooltipOptions,
+                maintainAspectRatio: false,
+                plugins: {
+                    ...commonTooltipOptions.plugins,
+                    legend: {
+                        position: 'right',
+                        labels: {
+                            color: '#CBD5E0'
+                        }
+                    },
+                    title: {
+                        display: true,
+                        text: 'Team Composition by Department',
+                        color: '#CBD5E0'
+                    }
+                }
+            }
+        });
+
+        const skillsLabels = [
+            'CAD Modeling', 'Welding & Fabrication', 'Circuit Design & Electronics', 
+            'Data Analysis', 'Teamwork & Collaboration', 'Problem-Solving', 'Project Management'
+        ].map(label => wrapLabel(label, 16));
+
+        new Chart(document.getElementById('skillsChart'), {
+            type: 'radar',
+            data: {
+                labels: skillsLabels,
+                datasets: [{
+                    label: 'Team Proficiency',
+                    data: [90, 80, 85, 75, 95, 90, 88],
+                    fill: true,
+                    backgroundColor: 'rgba(0, 190, 212, 0.2)',
+                    borderColor: vibrantTurquoise.bright,
+                    pointBackgroundColor: vibrantTurquoise.bright,
+                    pointBorderColor: '#fff',
+                    pointHoverBackgroundColor: '#fff',
+                    pointHoverBorderColor: vibrantTurquoise.bright
+                }]
+            },
+            options: {
+                ...commonTooltipOptions,
+                maintainAspectRatio: false,
+                elements: {
+                    line: {
+                        borderWidth: 3
+                    }
+                },
+                scales: {
+                    r: {
+                        angleLines: {
+                            display: false
+                        },
+                        suggestedMin: 0,
+                        suggestedMax: 100,
+                        pointLabels: {
+                           font: {
+                               size: 10,
+                               color: '#CBD5E0'
+                           }
+                        }
+                    }
+                }
+            }
+        });
+
+    </script>
 </body>
 </html>
